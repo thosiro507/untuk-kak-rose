@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunga Mawar untuk Kakak Ros</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .rose-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 2rem auto;
+        }
+        
+        .rose {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .petal {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .stem {
+            position: absolute;
+            background: linear-gradient(to bottom, #228B22, #2E8B57);
+            width: 10px;
+            height: 200px;
+            bottom: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        
+        .leaf {
+            position: absolute;
+            background: linear-gradient(to right, #2E8B57, #3CB371);
+            width: 50px;
+            height: 30px;
+            border-radius: 50% 0 50% 0;
+            transform: rotate(-30deg);
+            bottom: -150px;
+            left: 50%;
+            margin-left: 20px;
+            z-index: -1;
+        }
+        
+        .leaf:nth-child(2) {
+            transform: rotate(30deg);
+            margin-left: -70px;
+        }
+        
+        .message {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 15px;
+            max-width: 80%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <div class="text-center px-4">
+        <h1 class="text-4xl font-bold text-rose-600 mb-2">Untuk Kakak Ros</h1>
+        <p class="text-gray-600 mb-6">Sebuah bunga mawar khusus untukmu</p>
+        
+        <div class="rose-container">
+            <div class="rose" id="rose"></div>
+            <div class="stem"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+        </div>
+        
+        <div class="message" id="message">
+            <h2 class="text-2xl font-semibold text-rose-700 mb-2">Terima Kasih Telah Menjadi Hebat!</h2>
+            <p class="text-gray-700">Seindah mawar yang selalu mekar, semangatmu selalu menginspirasi. Teruslah bersinar!</p>
+        </div>
+        
+        <button id="animateBtn" class="mt-8 bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Kirim Pesan
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create rose petals
+            const rose = document.getElementById('rose');
+            const petalCount = 30;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                
+                // Randomize petal size and position
+                const size = 20 + Math.random() * 30;
+                const angle = (i / petalCount) * Math.PI * 2;
+                const distance = 50 + (i % 2) * 30;
+                
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size * 1.2}px`;
+                petal.style.left = `calc(50% + ${Math.cos(angle) * distance}px - ${size/2}px)`;
+                petal.style.top = `calc(50% + ${Math.sin(angle) * distance}px - ${size/2}px)`;
+                petal.style.transform = `rotate(${angle}rad)`;
+                petal.style.opacity = 0.8;
+                
+                // Add hover effect
+                petal.addEventListener('mouseover', function() {
+                    this.style.transform = `rotate(${angle}rad) scale(1.2)`;
+                    this.style.opacity = '1';
+                    this.style.boxShadow = '0 0 10px rgba(255,20,147,0.7)';
+                });
+                
+                petal.addEventListener('mouseout', function() {
+                    this.style.transform = `rotate(${angle}rad)`;
+                    this.style.opacity = '0.8';
+                    this.style.boxShadow = '2px 2px 5px rgba(0,0,0,0.2)';
+                });
+                
+                rose.appendChild(petal);
+            }
+            
+            // Animate button
+            const animateBtn = document.getElementById('animateBtn');
+            const message = document.getElementById('message');
+            
+            animateBtn.addEventListener('click', function() {
+                // Animate petals
+                const petals = document.querySelectorAll('.petal');
+                petals.forEach((petal, index) => {
+                    setTimeout(() => {
+                        petal.style.animation = 'pulse 0.5s ease-in-out';
+                        setTimeout(() => {
+                            petal.style.animation = '';
+                        }, 500);
+                    }, index * 50);
+                });
+                
+                // Show message
+                setTimeout(() => {
+                    message.classList.add('show');
+                }, 500);
+                
+                // Create floating hearts
+                createHearts();
+                
+                // Button effect
+                this.textContent = '❤️ Pesan Terkirim ❤️';
+                this.classList.remove('bg-rose-500', 'hover:bg-rose-600');
+                this.classList.add('bg-green-500', 'hover:bg-green-600');
+                this.disabled = true;
+            });
+            
+            function createHearts() {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.innerHTML = '❤️';
+                        heart.style.position = 'absolute';
+                        heart.style.left = `${Math.random() * 100}vw`;
+                        heart.style.top = '100vh';
+                        heart.style.fontSize = `${20 + Math.random() * 30}px`;
+                        heart.style.opacity = '0.7';
+                        heart.style.animation = `float-up ${3 + Math.random() * 4}s linear forwards`;
+                        
+                        document.body.appendChild(heart);
+                        
+                        // Create keyframes dynamically
+                        const style = document.createElement('style');
+                        style.innerHTML = `
+                            @keyframes float-up {
+                                to {
+                                    transform: translateY(-100vh) rotate(${Math.random() * 360}deg);
+                                    opacity: 0;
+                                }
+                            }
+                        `;
+                        document.head.appendChild(style);
+                        
+                        // Remove heart after animation
+                        setTimeout(() => {
+                            heart.remove();
+                            style.remove();
+                        }, 7000);
+                    }, i * 200);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
