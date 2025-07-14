@@ -1,228 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bunga Mawar untuk Kakak Ros</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Selamat Ulang Tahun Kakak Rose!</title>
     <style>
+        /* Reset dan Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
+        
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Layout Utama */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #d23669;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        /* Cake Section */
+        .cake-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden;
+            margin-bottom: 40px;
         }
         
-        .rose-container {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            margin: 2rem auto;
-        }
-        
-        .rose {
-            position: relative;
+        .cake-image {
             width: 100%;
-            height: 100%;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .petal {
-            position: absolute;
-            background: radial-gradient(circle at 30% 30%, #ff69b4, #ff1493);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-            transition: all 0.5s ease;
-        }
-        
-        .stem {
-            position: absolute;
-            background: linear-gradient(to bottom, #228B22, #2E8B57);
-            width: 10px;
-            height: 200px;
-            bottom: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: -1;
-        }
-        
-        .leaf {
-            position: absolute;
-            background: linear-gradient(to right, #2E8B57, #3CB371);
-            width: 50px;
-            height: 30px;
-            border-radius: 50% 0 50% 0;
-            transform: rotate(-30deg);
-            bottom: -150px;
-            left: 50%;
-            margin-left: 20px;
-            z-index: -1;
-        }
-        
-        .leaf:nth-child(2) {
-            transform: rotate(30deg);
-            margin-left: -70px;
-        }
-        
-        .message {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 1.5rem;
+            max-width: 600px;
             border-radius: 15px;
-            max-width: 80%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 20px;
+        }
+        
+        .cake-image img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+        
+        .cake-description {
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
         
-        .message.show {
-            opacity: 1;
-            transform: translateY(0);
+        .cake-description h2 {
+            color: #d23669;
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .cake-description p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        /* Countdown */
+        .countdown {
+            text-align: center;
+            margin: 30px 0;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .countdown h2 {
+            color: #d23669;
+            margin-bottom: 15px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+        }
+        
+        .date-box {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 15px;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.3rem;
+            min-width: 100px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Wish Section */
+        .wish-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .wish-section h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .wish-message {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .date-box {
+                margin: 5px;
+                min-width: 80px;
+                font-size: 1rem;
+                padding: 10px;
+            }
+            
+            .cake-image {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="text-center px-4">
-        <h1 class="text-4xl font-bold text-rose-600 mb-2">Untuk Kakak Ros</h1>
-        <p class="text-gray-600 mb-6">Sebuah bunga mawar khusus untukmu</p>
+    <div class="container">
+        <header>
+            <h1>Selamat Ulang Tahun Kakak Rose!</h1>
+            <p class="subtitle">15 Juli · Hari yang Istimewa untukmu</p>
+        </header>
         
-        <div class="rose-container">
-            <div class="rose" id="rose"></div>
-            <div class="stem"></div>
-            <div class="leaf"></div>
-            <div class="leaf"></div>
-        </div>
+        <section class="cake-section">
+            <div class="cake-image">
+                <img src="file_00000000755c622f834d8eb55614307b.png" alt="Kue ulang tahun mewah tiga tingkat berwarna pink dan putih dengan dekorasi bunga gula dan lilin angka di atasnya, diselimuti buttercream halus dengan pinggiran hiasan kerang" />
+            </div>
+            
+            <div class="cake-description">
+                <h2>Kue Spesial untuk Kakak Rose</h2>
+                <p>Kue ini dibuat dengan penuh cinta hanya untuk merayakan hari spesialmu. Setiap lapisan melambangkan tahun-tahun kebahagiaan yang telah kau lewati dan banyak tahun indah yang akan datang.</p>
+                <p>Rasa vanilla dan red velvet yang lembut dengan isian selai stroberi segar - karena kau pantas mendapatkan yang terbaik di hari istimewamu ini!</p>
+            </div>
+        </section>
         
-        <div class="message" id="message">
-            <h2 class="text-2xl font-semibold text-rose-700 mb-2">Terima Kasih Telah Menjadi Hebat!</h2>
-            <p class="text-gray-700">Seindah mawar yang selalu mekar, semangatmu selalu menginspirasi. Teruslah bersinar!</p>
-        </div>
+        <section class="countdown">
+            <h2>Menunggumu di:</h2>
+            <div>
+                <span class="date-box">15</span>
+                <span class="date-box">Juli</span>
+                <span class="date-box">2025</span>
+            </div>
+        </section>
         
-        <button id="animateBtn" class="mt-8 bg-rose-500 hover:bg-rose-600 text-white font-bold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
-            Kirim Pesan
-        </button>
+        <section class="wish-section">
+            <h2>Pesan untuk Kakak Rose</h2>
+            <div class="wish-message">
+                <p>Kakak Rose, di hari ulang tahunmu ini, kami ingin mengucapkan terima kasih untuk semua cinta dan kebahagiaan yang kau berikan. Semoga tahun ini membawa lebih banyak tawa, petualangan, dan pencapaian dalam hidupmu.</p>
+                <p>Kau adalah berkat bagi keluarga dan semua yang mengenalmu. Selamat merayakan hari spesialmu dengan penuh sukacita!</p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Dibuat dengan ❤ oleh navis untuk Kakak Rose tercinta</p>
+        </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create rose petals
-            const rose = document.getElementById('rose');
-            const petalCount = 30;
-            
-            for (let i = 0; i < petalCount; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'petal';
-                
-                // Randomize petal size and position
-                const size = 20 + Math.random() * 30;
-                const angle = (i / petalCount) * Math.PI * 2;
-                const distance = 50 + (i % 2) * 30;
-                
-                petal.style.width = `${size}px`;
-                petal.style.height = `${size * 1.2}px`;
-                petal.style.left = `calc(50% + ${Math.cos(angle) * distance}px - ${size/2}px)`;
-                petal.style.top = `calc(50% + ${Math.sin(angle) * distance}px - ${size/2}px)`;
-                petal.style.transform = `rotate(${angle}rad)`;
-                petal.style.opacity = 0.8;
-                
-                // Add hover effect
-                petal.addEventListener('mouseover', function() {
-                    this.style.transform = `rotate(${angle}rad) scale(1.2)`;
-                    this.style.opacity = '1';
-                    this.style.boxShadow = '0 0 10px rgba(255,20,147,0.7)';
-                });
-                
-                petal.addEventListener('mouseout', function() {
-                    this.style.transform = `rotate(${angle}rad)`;
-                    this.style.opacity = '0.8';
-                    this.style.boxShadow = '2px 2px 5px rgba(0,0,0,0.2)';
-                });
-                
-                rose.appendChild(petal);
-            }
-            
-            // Animate button
-            const animateBtn = document.getElementById('animateBtn');
-            const message = document.getElementById('message');
-            
-            animateBtn.addEventListener('click', function() {
-                // Animate petals
-                const petals = document.querySelectorAll('.petal');
-                petals.forEach((petal, index) => {
-                    setTimeout(() => {
-                        petal.style.animation = 'pulse 0.5s ease-in-out';
-                        setTimeout(() => {
-                            petal.style.animation = '';
-                        }, 500);
-                    }, index * 50);
-                });
-                
-                // Show message
-                setTimeout(() => {
-                    message.classList.add('show');
-                }, 500);
-                
-                // Create floating hearts
-                createHearts();
-                
-                // Button effect
-                this.textContent = '❤️ Pesan Terkirim ❤️';
-                this.classList.remove('bg-rose-500', 'hover:bg-rose-600');
-                this.classList.add('bg-green-500', 'hover:bg-green-600');
-                this.disabled = true;
-            });
-            
-            function createHearts() {
-                for (let i = 0; i < 20; i++) {
-                    setTimeout(() => {
-                        const heart = document.createElement('div');
-                        heart.innerHTML = '❤️';
-                        heart.style.position = 'absolute';
-                        heart.style.left = `${Math.random() * 100}vw`;
-                        heart.style.top = '100vh';
-                        heart.style.fontSize = `${20 + Math.random() * 30}px`;
-                        heart.style.opacity = '0.7';
-                        heart.style.animation = `float-up ${3 + Math.random() * 4}s linear forwards`;
-                        
-                        document.body.appendChild(heart);
-                        
-                        // Create keyframes dynamically
-                        const style = document.createElement('style');
-                        style.innerHTML = `
-                            @keyframes float-up {
-                                to {
-                                    transform: translateY(-100vh) rotate(${Math.random() * 360}deg);
-                                    opacity: 0;
-                                }
-                            }
-                        `;
-                        document.head.appendChild(style);
-                        
-                        // Remove heart after animation
-                        setTimeout(() => {
-                            heart.remove();
-                            style.remove();
-                        }, 7000);
-                    }, i * 200);
-                }
-            }
-        });
-    </script>
 </body>
 </html>
